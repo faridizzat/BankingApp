@@ -1,5 +1,7 @@
 package guis;
 
+import db_objs.User;
+
 import javax.swing.*;
 
 /*
@@ -8,7 +10,15 @@ import javax.swing.*;
     which will be unique to each subclass
  */
 public abstract class BaseFrame extends JFrame {
-    public BaseFrame(String title) {
+    //store user information
+    protected User user;
+
+    public BaseFrame(String title) {initialize(title);}
+
+    public BaseFrame(String title, User user) {
+        //initialize the user
+        this.user = user;
+
         initialize(title);
     }
 
