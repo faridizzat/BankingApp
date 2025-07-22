@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52ac6379-3c55-46bf-aa10-a047649315dc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppLauncher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/guis/BaseFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/guis/BaseFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/guis/LoginGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/guis/LoginGui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankingApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BankingApp.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/guis/BankingAppGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/guis/BankingAppGui.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,18 +36,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.AppLauncer.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Farid/Desktop/Java Libs/mysql-connector-j-9.3.0/mysql-connector-j-9.3.0/mysql-connector-j-9.3.0.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AppLauncer.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Farid/Desktop/BankingApp/lib/dotenv-java-3.2.0.jar",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="AppLauncer" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="AppLauncher" />
