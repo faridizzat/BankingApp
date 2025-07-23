@@ -5,8 +5,14 @@ package guis;
     This extends from the BaseFrame which emans we will need to define our own addGuiComponents()
  */
 
+import db_objs.User;
+import db_objs.myJDBC;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 public class LoginGui extends BaseFrame {
     public LoginGui() {
@@ -59,10 +65,41 @@ public class LoginGui extends BaseFrame {
         passwordTextField.setFont(new Font("Dialog", Font.PLAIN, 28));
         add(passwordTextField);
 
-        //create logn button
+        //create login button
         JButton loginButton = new JButton("Login");
         loginButton.setBounds(20, 460, super.getWidth() - 50, 40);
         loginButton.setFont(new Font("Dialog", Font.BOLD, 20));
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //get username
+                String username = userNameTextField.getText();
+
+                //get password
+                String password = String.valueOf(passwordTextField.getPassword());
+
+                //validate login
+                User user = myJDBC.validateLogin(username, password);
+
+                //if user is null it means invalid otherwise it is a valid accont
+                if (user != null) {
+                    //means valid login
+
+                    //dispose this gui
+                    LoginGui.this.dispose();
+
+                    //launch bank app gui
+                    BankingAppGui bankingAppGui = new BankingAppGui(user);
+                    bankingAppGui.setVisible(true);
+
+                    //show success message
+                    JOptionPane.showMessageDialog(bankingAppGui, "Login successful");
+                } else {
+                    //invalid login
+                    JOptionPane.showMessageDialog(LoginGui.this, "Login failed");
+                }
+            }
+        });
         add(loginButton);
 
         //create register label
