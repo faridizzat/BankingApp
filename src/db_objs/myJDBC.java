@@ -60,4 +60,55 @@ public class myJDBC {
         //not valid user
         return null;
     }
+
+    //register new user to the db
+    //true - register
+    //false - register fails
+    public static boolean register(String username, String password) {
+        try {
+            //check if username has already been taken
+            if (!checkUsername(username)) {
+                try {
+                    Connection connection = DriverManager.getConnection(DB_URL,DB_USERNAME, DB_PASSWORD);
+
+                    PreparedStatement preparedStatement = connection.prepareStatement(
+                            "INSERT INTO users (username, password)" + "VALUES(?,?)"
+                    );
+                    preparedStatement.setString(1, username);
+                    preparedStatement.setString(2, password);
+
+                    preparedStatement.executeUpdate();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                return false;
+
+            }
+
+        }
+        catch (
+
+        )
+    }
+
+    public static boolean checkUsername (String username) {
+        try {
+            Connection connection = DriverManager.getConnection(DB_URL,DB_USERNAME, DB_PASSWORD);
+
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT * FROM users where username = ?"
+            );
+            preparedStatement.setString(1, username);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (!resultSet.next()) {
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
 }

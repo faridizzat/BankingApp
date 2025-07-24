@@ -10,8 +10,7 @@ import db_objs.myJDBC;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.util.Arrays;
 
 public class LoginGui extends BaseFrame {
@@ -107,6 +106,18 @@ public class LoginGui extends BaseFrame {
         registerLabel.setBounds(0, 510, super.getWidth() - 10, 30);
         registerLabel.setFont(new Font("Dialog", Font.PLAIN, 20));
         registerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        //adds an event listener so when the mouse is clicked it will launch the register gui
+        registerLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                //dispose of this gui
+                LoginGui.this.dispose();
+
+                //launch the register gui
+                new RegisterGui().setVisible(true);
+            }
+        });
         add(registerLabel);
 
 
