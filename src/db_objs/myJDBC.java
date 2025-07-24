@@ -82,14 +82,13 @@ public class myJDBC {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                return false;
-
+                return true;
             }
-
         }
-        catch (
-
-        )
+        catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+        return  false;
     }
 
     public static boolean checkUsername (String username) {
