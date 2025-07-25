@@ -1,7 +1,11 @@
 package guis;
 
+import db_objs.myJDBC;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class RegisterGui extends BaseFrame {
     public RegisterGui() {
@@ -72,6 +76,45 @@ public class RegisterGui extends BaseFrame {
         JButton registerButton = new JButton("Register");
         registerButton.setBounds(20, 460, super.getWidth() - 50, 40);
         registerButton.setFont(new Font("Dialog", Font.BOLD, 20));
+        registerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //get username
+                String username = userNameTextField.getText();
+
+                //get password
+                String password = String.valueOf(passwordTextField.getPassword());
+
+                //get repeat password
+                String repeatPassword = String.valueOf(repeatPasswordTextField.getPassword());
+
+                //validate the user input
+                if(validateUserInput(username, password, repeatPassword)) {
+                    //attempt to register user to the db
+                    if(myJDBC.register(username, password)) {
+                        //register success
+                        //dispose of this gui
+                        RegisterGui.this.dispose();
+
+                        //launch the login gui
+                        LoginGui loginGui = new LoginGui();
+                        loginGui.setVisible(true);
+
+                        //create dialog box
+                        JOptionPane.showMessageDialog(loginGui, "Registered Account Successfully");
+
+                    } else {
+                        //register failed
+                        JOptionPane.showMessageDialog(RegisterGui.this, "Error: Username already taken");
+
+                    }
+
+                } else {
+                    //invalid user input
+                    JOptionPane.showMessageDialog(RegisterGui.this, "Error: Username must be at least 6 characteres\n" + "and/or Password must match");
+                }
+            }
+        });
         add(registerButton);
 
         //create login label
@@ -81,5 +124,24 @@ public class RegisterGui extends BaseFrame {
         loginLabel.setHorizontalAlignment(SwingConstants.CENTER);
         add(loginLabel);
 
+    }
+
+    private boolean validateUserInput (String username, String password, String repeatPassword) {
+        //all fields must have value
+        if (username.isEmpty() || password.isEmpty() || repeatPassword.isEmpty()) {
+            return false;
+        }
+
+        //username has to be at least 6 characters long
+        if (username.length() < 6) {
+            return false;
+        }
+
+        //password and repeat password must be the same
+        if (!password.equals(repeatPassword)) {
+            return false;
+        }
+        //passes validation
+        return true;
     }
 }
